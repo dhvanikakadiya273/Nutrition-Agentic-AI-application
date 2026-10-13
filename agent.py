@@ -6,9 +6,9 @@ Registers tools, loads the system prompt, and runs the agentic loop.
 import os
 from dotenv import load_dotenv
 from langchain_ibm import WatsonxLLM
-from langchain.agents import AgentExecutor, create_react_agent
-from langchain.prompts import PromptTemplate
-from langchain.tools import Tool
+from langchain_classic.agents import AgentExecutor, create_react_agent
+from langchain_classic.prompts import PromptTemplate
+from langchain_classic.tools import Tool
 
 from tools.nutrition_lookup import lookup_nutrition
 from tools.meal_planner import generate_meal_plan
