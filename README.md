@@ -1,5 +1,11 @@
 # 🥗 Nutrition Agentic AI Application
 
+![Python](https://img.shields.io/badge/Python-3.9%2B-blue?logo=python)
+![IBM WatsonX](https://img.shields.io/badge/IBM-WatsonX%20AI-0f62fe?logo=ibm)
+![LangChain](https://img.shields.io/badge/LangChain-1.x-green)
+![Streamlit](https://img.shields.io/badge/Streamlit-1.65-red?logo=streamlit)
+![License](https://img.shields.io/badge/License-MIT-yellow)
+
 An intelligent, conversational **Nutrition AI Agent** built with **IBM Bob** and **IBM WatsonX AI** that delivers personalised dietary advice, real-time nutritional information, AI-generated meal plans, calorie tracking, and evidence-based health recommendations.
 
 > **Repository:** [github.com/dhvanikakadiya273/Nutrition-Agentic-AI-application](https://github.com/dhvanikakadiya273/Nutrition-Agentic-AI-application)
@@ -35,11 +41,11 @@ The agent autonomously selects the right tool — food lookup, meal planner, cal
 | Feature | Description |
 |---------|-------------|
 | 🔍 **Food Nutrition Lookup** | Detailed macro & micronutrient info for any food item |
-| 🍽️ **AI Meal Planner** | Personalised weekly meal plans aligned to caloric goals |
+| 🍽️ **AI Meal Planner** | Personalised weekly meal plans for 6 diet types |
 | 🏋️ **Calorie Calculator** | Daily caloric needs via BMR / TDEE (Mifflin-St Jeor) |
 | 💬 **Conversational AI** | Multi-turn dialogue with memory, powered by WatsonX LLM |
-| 📊 **Diet Analysis** | Analyse meals and receive improvement suggestions |
-| 🌿 **Dietary Restriction Support** | Vegan, vegetarian, gluten-free, diabetic, and keto diets |
+| 📊 **Diet Analysis** | Analyse meals and receive evidence-based suggestions |
+| 🌿 **Dietary Support** | Vegan, vegetarian, gluten-free, diabetic, and keto diets |
 | 🔒 **Secure Config** | Credentials stored in `.env`, never committed to git |
 
 ---
@@ -47,7 +53,7 @@ The agent autonomously selects the right tool — food lookup, meal planner, cal
 ## 🏗️ Architecture
 
 ```
-NutritionAgent-IBMBob/
+Nutrition-Agentic-AI-application/
 │
 ├── agent.py                  # IBM Bob agentic loop — tool routing & LLM calls
 ├── app.py                    # Streamlit web UI (entry point)
@@ -62,8 +68,8 @@ NutritionAgent-IBMBob/
 │   ├── meal_planner.py       # Weekly meal plan generator (6 diet types)
 │   └── calorie_calculator.py # BMR / TDEE calculator (Mifflin-St Jeor)
 │
-├── prompts/                  # System prompts and few-shot templates
-│   └── system_prompt.txt
+├── prompts/                  # System prompts
+│   └── system_prompt.txt     # Agent persona and instruction template
 │
 └── config/                   # YAML configuration
     └── config.yaml           # Model ID, temperature, max tokens, tool settings
@@ -74,13 +80,13 @@ NutritionAgent-IBMBob/
 ```
 User (Browser)
     ↓  HTTP
-Streamlit UI (app.py)
+Streamlit UI  (app.py)
     ↓  Python call
-IBM Bob Agent Core (agent.py)
-    ↓  Tool selection via ReAct loop
-Tool Modules (tools/)
+IBM Bob Agent Core  (agent.py)
+    ↓  ReAct tool-selection loop
+Tool Modules  (tools/)
     ↓  LLM inference
-IBM WatsonX AI (granite / llama models)
+IBM WatsonX AI  (Granite / LLaMA models)
     ↑  Structured response
 User
 ```
@@ -154,7 +160,7 @@ WATSONX_MODEL_ID=ibm/granite-13b-chat-v2
 
 - **API Key** → [cloud.ibm.com/iam/apikeys](https://cloud.ibm.com/iam/apikeys) → click **Create**
 - **Project ID** → [dataplatform.cloud.ibm.com](https://dataplatform.cloud.ibm.com) → open your WatsonX project → copy the Project ID
-- **Region URL** → Use `https://eu-de.ml.cloud.ibm.com` for Frankfurt or `https://us-south.ml.cloud.ibm.com` for Dallas
+- **Region URL** → `https://us-south.ml.cloud.ibm.com` (Dallas) · `https://eu-de.ml.cloud.ibm.com` (Frankfurt)
 
 > ⚠️ **Security:** `.env` is excluded by `.gitignore` and will **never** be committed to GitHub. Only `.env.example` (with placeholder values) is tracked.
 
@@ -174,6 +180,12 @@ Open [http://localhost:8501](http://localhost:8501) in your browser.
 
 ```bash
 python agent.py
+```
+
+### Run the Smoke Test (no API key needed)
+
+```bash
+python test_tools.py
 ```
 
 ---
@@ -199,15 +211,29 @@ Try asking the agent any of these:
 
 | File / Folder | Description |
 |---------------|-------------|
-| `agent.py` | IBM Bob agent — registers tools, system prompt, and model |
-| `app.py` | Streamlit UI — chat interface entry point |
-| `tools/nutrition_lookup.py` | Tool: search food nutrition data (built-in DB + USDA API) |
-| `tools/meal_planner.py` | Tool: generate personalised meal plans (6 diet types) |
-| `tools/calorie_calculator.py` | Tool: compute BMR, TDEE, and goals |
+| `agent.py` | IBM Bob agent — registers tools, system prompt, and WatsonX LLM |
+| `app.py` | Streamlit UI — conversational chat interface |
+| `tools/nutrition_lookup.py` | Tool: food nutrition data (built-in DB + optional USDA API) |
+| `tools/meal_planner.py` | Tool: personalised meal plans (6 diet types, up to 7 days) |
+| `tools/calorie_calculator.py` | Tool: BMR, TDEE, and caloric goal recommendations |
 | `prompts/system_prompt.txt` | Agent persona and instruction template |
-| `config/config.yaml` | Model ID, generation params, tool enable/disable |
+| `config/config.yaml` | Model ID, generation params, tool enable/disable flags |
 | `.env.example` | Safe-to-commit credential template |
 | `requirements.txt` | All Python dependencies |
+| `test_tools.py` | Smoke test — runs all tools without WatsonX credentials |
+
+---
+
+## 🧰 Tech Stack
+
+| Layer | Technology |
+|-------|-----------|
+| LLM Platform | IBM WatsonX AI (Granite / LLaMA) |
+| Agent Framework | LangChain Classic (ReAct agent) |
+| Web Interface | Streamlit 1.65 |
+| Language | Python 3.9+ |
+| Config | python-dotenv, PyYAML |
+| Data | Pandas, NumPy |
 
 ---
 

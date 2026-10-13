@@ -2,11 +2,16 @@
 # Nutrition Agentic AI Application — .gitignore
 # ============================================================
 
-# ----- Python -----
+# ----- Python bytecode -----
 __pycache__/
 *.py[cod]
 *$py.class
 *.so
+*.pyo
+*.pyd
+.Python
+
+# ----- Eggs / packaging -----
 *.egg
 *.egg-info/
 dist/
@@ -19,9 +24,11 @@ develop-eggs/
 .installed.cfg
 lib/
 lib64/
-*.pyo
-*.pyd
-.Python
+wheels/
+*.whl
+pip-log.txt
+pip-delete-this-directory.txt
+MANIFEST
 
 # ----- Virtual Environments -----
 venv/
@@ -48,8 +55,6 @@ secrets.json
 *.swp
 *.swo
 *~
-.DS_Store
-Thumbs.db
 *.sublime-project
 *.sublime-workspace
 
@@ -78,13 +83,6 @@ logs/
 tmp/
 temp/
 
-# ----- Distribution / Packaging -----
-pip-log.txt
-pip-delete-this-directory.txt
-MANIFEST
-wheels/
-*.whl
-
 # ----- OS Generated -----
 .DS_Store
 .DS_Store?
@@ -95,5 +93,5 @@ ehthumbs.db
 Thumbs.db
 desktop.ini
 
-# ----- Streamlit -----
+# ----- Streamlit secrets (keep config.toml but not secrets) -----
 .streamlit/secrets.toml
