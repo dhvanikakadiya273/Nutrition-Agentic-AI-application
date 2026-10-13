@@ -2,7 +2,7 @@
 
 An intelligent, conversational **Nutrition AI Agent** built with **IBM Bob** and **IBM WatsonX AI** that delivers personalised dietary advice, real-time nutritional information, AI-generated meal plans, calorie tracking, and evidence-based health recommendations.
 
-> **Repository:** [github.com/YogeshRaje/NutritionAgent-IBMBob](https://github.com/YogeshRaje/NutritionAgent-IBMBob)
+> **Repository:** [github.com/dhvanikakadiya273/Nutrition-Agentic-AI-application](https://github.com/dhvanikakadiya273/Nutrition-Agentic-AI-application)
 
 ---
 
@@ -105,8 +105,8 @@ User
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/YogeshRaje/NutritionAgent-IBMBob.git
-cd NutritionAgent-IBMBob
+git clone https://github.com/dhvanikakadiya273/Nutrition-Agentic-AI-application.git
+cd Nutrition-Agentic-AI-application
 ```
 
 ### 2. Create a Virtual Environment
