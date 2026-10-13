@@ -1,0 +1,32 @@
+# ============================================================
+# Nutrition Agentic AI Application
+# Python Dependencies — requirements.txt
+# ============================================================
+
+# ----- IBM WatsonX AI (core platform) -----
+ibm-watsonx-ai>=1.0.4
+ibm-cloud-sdk-core>=3.18.0
+
+# ----- LLM / Agent Framework -----
+langchain>=0.2.0
+langchain-ibm>=0.1.0
+langchain-community>=0.2.0
+langchain-core>=0.2.0
+
+# ----- Web Interface -----
+streamlit>=1.35.0
+
+# ----- HTTP & API Clients -----
+requests>=2.31.0
+
+# ----- Data Handling -----
+pandas>=2.1.0
+numpy>=1.26.0
+
+# ----- Environment & Configuration -----
+python-dotenv>=1.0.0
+PyYAML>=6.0.1
+
+# ----- Validation & Type Safety -----
+pydantic>=2.6.0
+pydantic-settings>=2.2.0

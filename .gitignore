@@ -1,0 +1,99 @@
+# ============================================================
+# Nutrition Agentic AI Application — .gitignore
+# ============================================================
+
+# ----- Python -----
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+eggs/
+parts/
+var/
+sdist/
+develop-eggs/
+.installed.cfg
+lib/
+lib64/
+*.pyo
+*.pyd
+.Python
+
+# ----- Virtual Environments -----
+venv/
+env/
+ENV/
+.venv/
+.env_backup/
+virtualenv/
+
+# ----- Environment & Secrets (NEVER commit these) -----
+.env
+.env.local
+.env.*.local
+*.pem
+*.key
+ibm_credentials.env
+wml_credentials.json
+secrets.yaml
+secrets.json
+
+# ----- IDE & Editors -----
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+*.sublime-project
+*.sublime-workspace
+
+# ----- Jupyter Notebooks -----
+.ipynb_checkpoints/
+*.ipynb_checkpoints
+*.nbconvert
+
+# ----- Testing & Coverage -----
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+coverage.xml
+*.cover
+nosetests.xml
+test-results/
+.hypothesis/
+
+# ----- Logs & Temp Files -----
+*.log
+*.tmp
+*.bak
+*.cache
+logs/
+tmp/
+temp/
+
+# ----- Distribution / Packaging -----
+pip-log.txt
+pip-delete-this-directory.txt
+MANIFEST
+wheels/
+*.whl
+
+# ----- OS Generated -----
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+
+# ----- Streamlit -----
+.streamlit/secrets.toml

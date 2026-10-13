@@ -1,0 +1,32 @@
+# Nutrition Agentic AI Application — Configuration
+# Copy / edit as needed. All values here are safe defaults (no secrets).
+
+model:
+  id: "ibm/granite-13b-chat-v2"          # WatsonX model ID
+  temperature: 0.7
+  max_new_tokens: 1024
+  min_new_tokens: 1
+  decoding_method: "greedy"
+  top_k: 50
+  top_p: 1.0
+  repetition_penalty: 1.1
+
+agent:
+  verbose: true                           # Print agent reasoning steps
+  handle_parsing_errors: true
+  max_iterations: 10                      # Safety limit on tool calls
+
+tools:
+  nutrition_lookup:
+    enabled: true
+    use_usda_api: false                   # Set true if USDA_API_KEY is in .env
+  meal_planner:
+    enabled: true
+    max_days: 7
+  calorie_calculator:
+    enabled: true
+
+app:
+  port: 8501
+  title: "Nutrition AI Agent"
+  debug: false
